@@ -30,31 +30,31 @@ export const executionCountMiddleware: ExpressControllerFunction = async (
     const date_end_subscription = user[0].date_end_subscription;
     const date_start_subscription = user[0].date_start_subscription;
 
-    if (
-      !date_end_subscription ||
-      !date_start_subscription ||
-      date_start_subscription.getTime() > execution_date.getTime() ||
-      date_end_subscription.getTime() < execution_date.getTime()
-    ) {
-      // check nb executions in free mode
-      const executions =
-        (await executionService.getAll()) as unknown as ReqExecution[];
+    // if (
+    //   !date_end_subscription ||
+    //   !date_start_subscription ||
+    //   date_start_subscription.getTime() > execution_date.getTime() ||
+    //   date_end_subscription.getTime() < execution_date.getTime()
+    // ) {
+    //   // check nb executions in free mode
+    //   const executions =
+    //     (await executionService.getAll()) as unknown as ReqExecution[];
 
-      const nbExecutions = executions.filter(
-        (execution) =>
-          execution.userId.id === userId &&
-          compareDate(execution.execution_date, execution_date)
-      ).length;
+    //   const nbExecutions = executions.filter(
+    //     (execution) =>
+    //       execution.userId.id === userId &&
+    //       compareDate(execution.execution_date, execution_date)
+    //   ).length;
 
-      req.nbExecutions = nbExecutions;
+    //   req.nbExecutions = nbExecutions;
 
-      if (nbExecutions >= 50) {
-        res
-          .status(429)
-          .send({ outOfLimit: "outOfLimit free plan", nbExecutions });
-        return;
-      }
-    }
+    //   if (nbExecutions >= 50) {
+    //     res
+    //       .status(429)
+    //       .send({ outOfLimit: "outOfLimit free plan", nbExecutions });
+    //     return;
+    //   }
+    // }
 
     const output = "";
 
