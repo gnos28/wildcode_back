@@ -11,8 +11,8 @@ services:
       - ./archives:/back/archives
     command: npm run start:dev
     ports:
-      - "5000:5000"
-      - "5001:5001"
+      - "5500:5000"
+      - "5501:5001"
     environment:
       NODE_ENV: development
       DEBUG: nodejs-docker-express:*

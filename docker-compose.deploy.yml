@@ -7,8 +7,8 @@ services:
       - ./archives:/back/archives
     command: npm run start
     ports:
-      - "5000:5000"
-      - "5001:5001"
+      - "5500:5000"
+      - "5501:5001"
     environment:
       NODE_ENV: production
       DEBUG: nodejs-docker-express:*
